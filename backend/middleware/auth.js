@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken"
 
 const authMiddleware = async (req, res, next) => {
-  const { token } = req.headers;
+  const { token } = await req.headers;
   if (!token) {
     return res.json({
       success: false,
-      message: "Not authorized login again"
+      message: "Not authorized login again",
+      token: token
     })
   }
   try {
